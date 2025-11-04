@@ -18,7 +18,7 @@ export const products = [
         title: 'LOUD' ,
         link: '/',
         price: 5000,
-        desc: 'A Creative Teachnology school for the next generation of innovators. Dreambox Clubs:Early Years | Junior | Senior  Subjects: ICT | Coding | Robotics | Mathematics | English | Design | Creativity'
+        desc: 'Premium prescription formula — carefully crafted and lab-tested for reliable results'
     },
     {
         id: 3,
@@ -27,7 +27,7 @@ export const products = [
         title: 'ICE' ,
         link: '/',
         price: 5000,
-        desc: 'A Creative Teachnology school for the next generation of innovators. Dreambox Clubs:Early Years | Junior | Senior  Subjects: ICT | Coding | Robotics | Mathematics | English | Design | Creativity'
+        desc: 'Premium prescription formula — carefully crafted and lab-tested for reliable results'
     },
     {
         id: 4,
@@ -36,7 +36,7 @@ export const products = [
         title: 'WEED' ,
         link: '/',
         price: 5000,
-        desc: 'A Creative Teachnology school for the next generation of innovators. Dreambox Clubs:Early Years | Junior | Senior  Subjects: ICT | Coding | Robotics | Mathematics | English | Design | Creativity'
+        desc: 'Premium prescription formula — carefully crafted and lab-tested for reliable results'
     },
     
 ]

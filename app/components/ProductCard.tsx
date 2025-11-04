@@ -9,7 +9,7 @@ type ProductCardProps = {
     onBuy?: () => void;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ title, desc, src, price, onBuy }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ title, desc, src, price, onBuy }) => {
   return (
     <>
     

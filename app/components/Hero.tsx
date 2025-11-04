@@ -5,12 +5,20 @@ import ProductCard from './ProductCard'
 
 const Hero: React.FC = () => {
     return (
-        <>
-        {products.map((product) => {
-            return <ProductCard key={product.id} title={product.title} dec={product.desc} src={product.src} price={product.price} />
-        })}
-
-        </>
+        <div className="w-full px-4 py-6 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {products.map((product) => (
+                    <div key={product.id} className="flex">
+                        <ProductCard
+                            title={product.title}
+                            desc={product.desc}
+                            src={product.src}
+                            price={product.price}
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
     )
 }
 
