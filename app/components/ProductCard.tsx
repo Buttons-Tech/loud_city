@@ -1,4 +1,5 @@
 import Image, { StaticImageData } from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 
 type ProductCardProps = {
@@ -36,12 +37,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, desc, src, price, onBu
 
                 <div className="flex justify-between items-center w-full mt-1 gap-3">
                     <div className="text-[18px] text-black font-extrabold">N5000</div>
+                    <Link href="https://paystack.shop/pay/3t9tc92gd2">
+
                     <button
                         type="button"
                         className="bg-gray-900 text-white px-4 py-2 rounded-lg cursor-pointer font-bold"
                     >
                         BUY
                     </button>
+                    </Link>
                 </div>
             </div>
     </>
