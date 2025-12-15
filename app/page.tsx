@@ -98,7 +98,7 @@ export default function LoudCity() {
           
           {/* ⭐️ NEW: Category Selector */}
           <div className="flex space-x-4 mb-8 p-3 bg-white rounded-xl shadow-md border border-gray-100">
-            {(['All', 'Strain', 'Accessory'] as FilterCategory[]).map(category => (
+            {(['All', 'Smoke', 'Accessory'] as FilterCategory[]).map(category => (
               <button
                 key={category}
                 onClick={() => setCategoryFilter(category)}
