@@ -27,7 +27,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToOrder 
 
       <div className="p-4">
         <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
-        <p className={`text-sm font-semibold mt-1 ${product.category === 'Strain' ? 'text-green-600' : 'text-indigo-600'}`}>
+        <p className={`text-sm font-semibold mt-1 ${product.category === 'Smoke' ? 'text-green-600' : 'text-indigo-600'}`}>
           {product.category}
         </p>
         <p className="text-2xl font-extrabold text-gray-800 mt-2">
