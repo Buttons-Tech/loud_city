@@ -87,7 +87,7 @@ export default function LoudCity() {
         <div className="lg:col-span-3">
           <header className="mb-8">
             <h1 className="text-5xl font-extrabold text-green-700 tracking-tight">🌿 Loud City</h1>
-            <p className="text-xl text-gray-600 mt-2">Welcome! Select your strains and accessories below.</p>
+            <p className="text-xl text-gray-600 mt-2">Welcome! Select your smoke and accessories below.</p>
           </header>
 
           {/* Spotify Embed Placeholder (UNMODIFIED) */}

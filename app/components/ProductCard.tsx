@@ -14,9 +14,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToOrder 
       
       {/* Placeholder Image (Use next/image for real images) */}
       <div className="relative w-full h-40 bg-gray-100 flex items-center justify-center">
-        <span className="text-gray-500 text-sm">Product Image Placeholder</span>
-        {/* For production, replace the above with: 
-        <Image src={product.imageUrl} alt={product.name} layout="fill" objectFit="cover" /> */}
+        
+        <Image src={product.imageUrl} alt={product.name} layout="fill" objectFit="cover" /> 
       </div>
 
       <div className="p-4">
