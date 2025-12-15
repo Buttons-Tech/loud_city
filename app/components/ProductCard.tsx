@@ -1,55 +1,42 @@
-import Image, { StaticImageData } from 'next/image'
-import Link from 'next/link';
-import React from 'react'
+// components/ProductCard.tsx
+import React from 'react';
+import Image from 'next/image';
+import { Product } from '../../types';
 
-type ProductCardProps = {
-    title: string;
-    desc: string;
-    src: string | StaticImageData;
-    price: number;
-    onBuy?: () => void;
+interface ProductCardProps {
+  product: Product;
+  onAddToOrder: (product: Product) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ title, desc, src, price, onBuy }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToOrder }) => {
   return (
-    <>
-    
-            <div style={{backgroundImage: 'url(/loud.png)', backgroundPosition: 'center'}} className="max-w-[360px] my-10 mx-auto p-5 rounded-xl border border-gray-200 shadow-lg flex flex-col items-center gap-3 bg-white ">
-                <h2 className="text-4xl font-black text-[#EE1F0F] tracking-wider uppercase m-0">{title}</h2>
+    <div className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
+      
+      {/* Placeholder Image (Use next/image for real images) */}
+      <div className="relative w-full h-40 bg-gray-100 flex items-center justify-center">
+        <span className="text-gray-500 text-sm">Product Image Placeholder</span>
+        {/* For production, replace the above with: 
+        <Image src={product.imageUrl} alt={product.name} layout="fill" objectFit="cover" /> */}
+      </div>
 
-                <p className="m-0 text-gray-900 text-center text-[14px] leading-[1.3]">
-                    {desc}
-                </p>
-
-                <div
-                    aria-hidden="false"
-                    role="img"
-                    aria-label="Prescription bottle"
-                    className="flex justify-center items-center p-3"
-                >
-                    <Image
-                        src="/skunk_red.png"
-                        alt="Skunk Bottle"
-                        width={200}
-                        height={400}
-                    />
-                </div>
-
-                <div className="flex justify-between items-center w-full mt-1 gap-3">
-                    <div className="text-[18px] text-black font-extrabold">N5000</div>
-                    <Link href="https://paystack.shop/pay/3t9tc92gd2">
-
-                    <button
-                        type="button"
-                        className="bg-gray-900 text-white px-4 py-2 rounded-lg cursor-pointer font-bold"
-                    >
-                        BUY
-                    </button>
-                    </Link>
-                </div>
-            </div>
-    </>
-  )
-}
-
-export default ProductCard
+      <div className="p-4">
+        <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
+        <p className={`text-sm font-semibold mt-1 ${product.category === 'Strain' ? 'text-green-600' : 'text-indigo-600'}`}>
+          {product.category}
+        </p>
+        <p className="text-2xl font-extrabold text-gray-800 mt-2">
+          ${product.price.toFixed(2)} 
+          <span className="text-sm font-normal text-gray-500 ml-1">/{product.unit}</span>
+        </p>
+        <p className="text-sm text-gray-600 mt-2 line-clamp-2">{product.description}</p>
+        
+        <button
+          onClick={() => onAddToOrder(product)}
+          className="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.02] active:scale-[0.98]"
+        >
+          ➕ Add to Order
+        </button>
+      </div>
+    </div>
+  );
+};
