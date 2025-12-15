@@ -69,7 +69,7 @@ export default function LoudCity() {
 
     const message = `🌿 Loud City Order 🌿\n\nRoom Number: *${roomNumber}*\n\n--- Items ---\n${orderDetails}\n\nTOTAL: *$${subtotal.toFixed(2)}*\n\nPlease confirm delivery.`;
     
-    const phoneNumber = '1234567890'; 
+    const phoneNumber = '09066596603'; 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 

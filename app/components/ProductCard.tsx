@@ -13,10 +13,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToOrder 
     <div className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
       
       {/* Placeholder Image (Use next/image for real images) */}
-      <div className="relative w-full h-40 bg-gray-100 flex items-center justify-center">
-        
-        <Image src={product.imageUrl} alt={product.name} layout="fill" objectFit="cover" /> 
-      </div>
+      <div className="relative w-full h-40">
+    <Image 
+        src={product.imageUrl} 
+        alt={product.name} 
+        // ⭐️ New Prop: Use 'fill' instead of layout="fill"
+        fill 
+        // ⭐️ New Prop: Use CSS class 'object-cover' instead of objectFit="cover"
+        className="object-cover rounded-t-xl"
+        sizes="(max-width: 768px) 100vw, 33vw" // Recommended for performance
+    />
+</div>
 
       <div className="p-4">
         <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
