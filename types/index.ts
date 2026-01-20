@@ -1,50 +1,34 @@
-// types/index.ts
-
-export interface Product {
-  id: number;
+export interface Vendor {
   name: string;
-  category: 'Smoke' | 'Accessory';
-  price: number;
-  unit: string; // e.g., 'per gram' or 'each'
-  description: string;
-  imageUrl: string;
+  image: string;
+  location?: string; // For the pickup point
+  active?: boolean;
 }
 
-export const mockProducts: Product[] = [
-  {
-    id: 1,
-    name: 'Cana Diesel',
-    category: 'Smoke',
-    price: 9000.00,
-    unit: 'per gram',
-    description: 'Energetic Sativa. Great for socializing and creativity.',
-    imageUrl: '/4.png', // Replace with a real path/URL
-  },
-  {
-    id: 2,
-    name: 'Scott Loud',
-    category: 'Smoke',
-    price: 3000.00,
-    unit: 'per gram',
-    description: 'Relaxing Indica. Ideal for winding down and sleep.',
-    imageUrl: '/scott.webp',
-  },
-  {
-    id: 3,
-    name: 'King Size Roller',
-    category: 'Accessory',
-    price: 3000.99,
-    unit: 'each',
-    description: 'High-quality acrylic roller for perfect joints.',
-    imageUrl: '/roller.jpg',
-  },
-  {
-    id: 4,
-    name: '4-Piece Grinder',
-    category: 'Accessory',
-    price: 2500.50,
-    unit: 'each',
-    description: 'Aluminum alloy grinder with kief catcher.',
-    imageUrl: '/grinder.jpg',
-  },
-];
+export interface Variant {
+  id: string;
+  label: string;       // e.g., "Cana"
+  variantName: string; // e.g., "Cana Premium"
+  basePrice: number;   // e.g., 9000
+  img: string;
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  isTea: boolean;
+  vendor: Vendor;
+  variants: Variant[];
+}
+
+export interface Order {
+  id: string;
+  productName: string;
+  variantLabel: string; // "Cana" or "Scott"
+  weight: number;
+  totalPrice: number;
+  status: 'pending' | 'paid' | 'dispatched' | 'completed';
+  customerLocation: string;
+  createdAt: string;
+  opayReference?: string;
+}

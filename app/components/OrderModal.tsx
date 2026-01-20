@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { X, CheckCircle, MapPin, CreditCard, Loader2, ChevronRight } from 'lucide-react';
-import { Variant } from '@/app/types';
+import { Variant } from '@/types';
 
 interface OrderModalProps {
   product: Variant;
