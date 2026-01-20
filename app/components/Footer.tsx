@@ -7,7 +7,7 @@ const Footer = () => {
         <div style={{maxWidth: 1100, margin: '0 auto', padding: '1.25rem', display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center', justifyContent: 'space-between'}}>
             <div style={{display: 'flex', flexDirection: 'column', gap: 4}}>
                 <span style={{fontWeight: 600}}>Loud City</span>
-                <small style={{color: '#6b6b6b'}}>© {new Date().getFullYear()} Loud City — All rights reserved</small>
+                <small style={{color: '#6b6b6b'}}>© {new Date().getFullYear()} Cloud City — All rights reserved</small>
             </div>
 
             <nav aria-label="Footer navigation" style={{display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap'}}>

@@ -8,7 +8,7 @@ const PRODUCTS = [
   { 
     id: '1', 
     name: 'Silver Needle White Tea', 
-    basePrice: 150, // Price per gram
+    basePrice: 2000, // Price per gram
     isTea: true, 
     vendor: { name: 'Green Leaf', image: 'https://i.pravatar.cc/150?u=green' }, 
     img: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=600&q=80' 
@@ -34,7 +34,7 @@ const PRODUCTS = [
 
 // --- INDIVIDUAL PRODUCT CARD COMPONENT ---
 function ProductCard({ product }: { product: any }) {
-  const [weight, setWeight] = useState(50); // Default 50g for tea
+  const [weight, setWeight] = useState(1); // Default 50g for tea
   
   // Calculate price: if it's tea, multiply. If not, use base price.
   const displayPrice = product.isTea ? product.basePrice * weight : product.basePrice;
@@ -64,7 +64,7 @@ function ProductCard({ product }: { product: any }) {
       {product.isTea ? (
         <div className="bg-gray-50 rounded-2xl p-2 flex items-center justify-between border border-gray-100">
           <button 
-            onClick={() => setWeight(Math.max(10, weight - 10))}
+            onClick={() => setWeight(Math.max(1, weight - 1))}
             className="p-2 bg-white shadow-sm rounded-xl hover:bg-gray-100 transition-colors active:scale-95"
           >
             <Minus size={16} className="text-gray-600" />
@@ -74,7 +74,7 @@ function ProductCard({ product }: { product: any }) {
             <p className="text-[10px] text-gray-400 font-bold tracking-wider">₦{product.basePrice}/g</p>
           </div>
           <button 
-            onClick={() => setWeight(weight + 10)}
+            onClick={() => setWeight(weight + 1)}
             className="p-2 bg-white shadow-sm rounded-xl hover:bg-gray-100 transition-colors active:scale-95"
           >
             <Plus size={16} className="text-gray-600" />
@@ -110,7 +110,7 @@ export default function HomePage() {
              <div className="flex items-center gap-2 lg:hidden">
                 <Menu size={24} className="text-gray-600" />
             </div>
-            <h1 className="font-black text-2xl tracking-tighter lg:text-3xl">SOLACE</h1>
+            <h1 className="font-black text-2xl tracking-tighter lg:text-3xl">CLOUD CITY</h1>
             <div className="flex gap-3 sm:gap-4">
             <div className="bg-gray-100 p-2 sm:p-2.5 rounded-full cursor-pointer hover:bg-gray-200 transition"><Search size={20} className="text-gray-600" /></div>
             <div className="bg-gray-100 p-2 sm:p-2.5 rounded-full cursor-pointer hover:bg-gray-200 transition"><User size={20} className="text-gray-600" /></div>
@@ -124,8 +124,8 @@ export default function HomePage() {
             <div className="w-full h-40 sm:h-48 md:h-56 rounded-[2.5rem] bg-gradient-to-r from-green-900 via-black to-gray-900 p-8 sm:p-10 flex items-center justify-between overflow-hidden relative shadow-xl">
             <div className="relative z-10 max-w-xs sm:max-w-md">
                 <span className="bg-green-500 text-black text-[10px] font-black px-2 py-1 rounded mb-2 inline-block uppercase">Live Now</span>
-                <h2 className="text-white font-black text-2xl sm:text-3xl lg:text-4xl leading-tight">The Smoke Session</h2>
-                <p className="text-green-400 text-sm sm:text-base font-bold mt-1">Ep. 4: Lo-Fi & Leaf</p>
+                <h2 className="text-white font-black text-2xl sm:text-3xl lg:text-4xl leading-tight">The Cloud Session</h2>
+                <p className="text-green-400 text-sm sm:text-base font-bold mt-1">Ep. 1: The Lagos Night Life</p>
             </div>
             <PlayCircle size={80} className="text-white/10 absolute -right-6 -bottom-6 md:text-white/20" />
             <button className="relative z-10 bg-white text-black text-xs sm:text-sm font-black px-5 py-2.5 rounded-full uppercase hover:bg-green-500 hover:text-white transition-colors hidden sm:block">Listen Now</button>

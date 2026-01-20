@@ -1,48 +1,57 @@
-// components/ProductCard.tsx
-import React from 'react';
-import Image from 'next/image';
-import { Product } from '../../types';
+'use client'
+import React, { useState } from 'react';
+import { Plus, Minus, ShoppingCart, MapPin } from 'lucide-react';
+import OrderModal from './OrderModal';
 
-interface ProductCardProps {
-  product: Product;
-  onAddToOrder: (product: Product) => void;
-}
+export default function ProductCard({ product }) {
+  const [weight, setWeight] = useState(50);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToOrder }) => {
+  const current = product.isTea ? product.variants[activeIdx] : product;
+  const price = product.isTea ? current.basePrice * weight : product.basePrice;
+
   return (
-    <div className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
-      
-      {/* Placeholder Image (Use next/image for real images) */}
-      <div className="relative w-full h-40">
-    <Image 
-        src={product.imageUrl} 
-        alt={product.name} 
-        // ⭐️ New Prop: Use 'fill' instead of layout="fill"
-        fill 
-        // ⭐️ New Prop: Use CSS class 'object-cover' instead of objectFit="cover"
-        className="object-cover rounded-t-xl"
-        sizes="(max-width: 768px) 100vw, 33vw" // Recommended for performance
-    />
-</div>
-
-      <div className="p-4">
-        <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
-        <p className={`text-sm font-semibold mt-1 ${product.category === 'Smoke' ? 'text-green-600' : 'text-indigo-600'}`}>
-          {product.category}
-        </p>
-        <p className="text-2xl font-extrabold text-gray-800 mt-2">
-          ${product.price.toFixed(2)} 
-          <span className="text-sm font-normal text-gray-500 ml-1">/{product.unit}</span>
-        </p>
-        <p className="text-sm text-gray-600 mt-2 line-clamp-2">{product.description}</p>
-        
-        <button
-          onClick={() => onAddToOrder(product)}
-          className="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200 ease-in-out transform hover:scale-[1.02] active:scale-[0.98]"
-        >
-          ➕ Add to Order
-        </button>
+    <div className="bg-white rounded-[2.5rem] p-4 border border-gray-100 shadow-sm flex flex-col gap-4 transition-all hover:shadow-md">
+      <div className="relative h-56 rounded-3xl overflow-hidden">
+        <img src={current.img} className="w-full h-full object-cover transition-all" alt={product.name} />
+        <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-md text-white text-[10px] font-black px-3 py-1.5 rounded-full flex items-center gap-1">
+          <MapPin size={10} className="text-green-400" /> 15m Delivery
+        </div>
       </div>
+
+      <div className="px-1">
+        <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{product.vendor.name}</span>
+        <h3 className="font-black text-xl text-gray-800">{product.isTea ? current.variantName : product.name}</h3>
+      </div>
+
+      {product.isTea && (
+        <div className="flex gap-2 px-1">
+          {product.variants.map((v, i) => (
+            <button key={i} onClick={() => setActiveIdx(i)} className={`flex-1 py-2 rounded-xl text-[10px] font-black border transition ${activeIdx === i ? 'bg-black text-white border-black' : 'text-gray-400 border-gray-100'}`}>
+              {v.label}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {product.isTea ? (
+        <div className="bg-gray-50 rounded-2xl p-2 flex items-center justify-between border border-gray-100">
+          <button onClick={() => setWeight(Math.max(10, weight - 10))} className="p-2 bg-white rounded-xl shadow-sm"><Minus size={16}/></button>
+          <div className="text-center">
+            <span className="font-black text-lg">{weight}g</span>
+            <p className="text-[10px] text-gray-400 font-bold tracking-widest">₦{current.basePrice}/g</p>
+          </div>
+          <button onClick={() => setWeight(weight + 10)} className="p-2 bg-white rounded-xl shadow-sm"><Plus size={16}/></button>
+        </div>
+      ) : <div className="h-[64px] flex items-center px-4 italic text-gray-400 text-xs font-bold">Fixed unit price</div>}
+
+      <div className="flex justify-between items-center mt-2 px-1">
+        <span className="font-black text-2xl">₦{price.toLocaleString()}</span>
+        <button onClick={() => setShowModal(true)} className="bg-black text-white p-4 rounded-2xl hover:bg-green-600 transition active:scale-95"><ShoppingCart size={20}/></button>
+      </div>
+
+      {showModal && <OrderModal product={current} weight={weight} totalPrice={price} onClose={() => setShowModal(false)} />}
     </div>
   );
-};
+}
